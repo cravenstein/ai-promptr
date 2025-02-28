@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CinePrompt AI - Generate Cinematic AI Image Prompts</title>
+  <meta name="description" content="Generate perfect prompts for AI image generators with a cinematic focus.">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>CinePrompt AI</h1>
+      <p>Cinematic Prompt Generator</p>
+    </div>
+    <div class="header-controls">
+      <button id="themeToggleBtn" class="icon-button"><i class="fas fa-moon"></i></button>
+      <div class="user-section">
+        <span id="userDisplay"></span>
+        <div class="dropdown">
+          <button class="icon-button"><i class="fas fa-user"></i></button>
+          <div class="dropdown-content">
+            <button id="profileBtn">Profile</button>
+            <button id="logoutBtn">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Login Section -->
+  <section id="loginSection" class="login-container">
+    <div class="login-form">
+      <h2>Welcome to CinePrompt AI</h2>
+      <p>Generate perfect prompts for AI image generators with a cinematic focus.</p>
+      
+      <div class="input-group">
+        <label for="loginUsername">Username</label>
+        <input type="text" id="loginUsername" placeholder="Enter your username">
+      </div>
+      
+      <div class="input-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password">
+      </div>
+      
+      <div class="button-group">
+        <button id="loginBtn" class="primary-button">Login</button>
+        <button id="registerBtn" class="secondary-button">Register</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content (hidden until logged in) -->
+  <main id="mainContent" style="display: none;">
+    <!-- Tabs Navigation -->
+    <div class="tabs">
+      <button class="tab-link active" data-tab="promptGeneratorTab">Prompt Generator</button>
+      <button class="tab-link" data-tab="historyTab">History</button>
+      <button class="tab-link" data-tab="workspaceTab">Workspace</button>
+      <button class="tab-link" data-tab="helpTab">Help</button>
+    </div>
+    
+    <!-- Prompt Generator Tab -->
+    <div id="promptGeneratorTab" class="tab-content">
+      <div class="prompt-container">
+        <!-- Form Section -->
+        <section class="prompt-form-section">
+          <h2>Create Your Prompt</h2>
+          
+          <form id="promptForm">
+            <!-- Basic Options -->
+            <div class="form-section">
+              <h3>Basic Options</h3>
+              
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="subject">Subject</label>
+                  <input type="text" id="subject" placeholder="What is the main subject?">
+                </div>
+              </div>
+              
+              <div class="form-row two-columns">
+                <div class="input-group">
+                  <label for="genre">Genre</label>
+                  <select id="genre">
+                    <option value="">Select Genre</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="horror">Horror</option>
+                    <option value="drama">Drama</option>
+                    <option value="action">Action</option>
+                    <option value="romance">Romance</option>
+                    <option value="western">Western</option>
+                    <option value="documentary">Documentary</option>
+                    <option value="animation">Animation</option>
+                  </select>
+                </div>
+                
+                <div class="input-group">
+                  <label for="setting">Setting</label>
+                  <select id="setting">
+                    <option value="">Select Setting</option>
+                    <option value="futuristic">Futuristic</option>
+                    <option value="medieval">Medieval</option>
+                    <option value="modern">Modern</option>
+                    <option value="post-apocalyptic">Post-Apocalyptic</option>
+                    <option value="ancient">Ancient</option>
+                    <option value="victorian">Victorian</option>
+                    <option value="space">Space</option>
+                    <option value="underwater">Underwater</option>
+                    <option value="urban">Urban</option>
+                    <option value="rural">Rural</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Style Options -->
+            <div class="form-section">
+              <h3>Style Options</h3>
+              
+              <div class="form-row two-columns">
+                <div class="input-group">
+                  <label for="style">Style</label>
+                  <select id="style">
+                    <option value="">Select Style</option>
+                    <option value="photorealistic">Photorealistic</option>
+                    <option value="cinematic">Cinematic</option>
+                    <option value="anime">Anime</option>
+                    <option value="comic-book">Comic Book</option>
+                    <option value="oil-painting">Oil Painting</option>
+                    <option value="watercolor">Watercolor</option>
+                    <option value="3d-render">3D Render</option>
+                    <option value="concept-art">Concept Art</option>
+                    <option value="noir">Noir</option>
+                    <option value="minimalist">Minimalist</option>
+                  </select>
+                </div>
+                
+                <div class="input-group">
+                  <label for="lighting">Lighting</label>
+                  <select id="lighting">
+                    <option value="">Select Lighting</option>
+                    <option value="natural">Natural</option>
+                    <option value="dramatic">Dramatic</option>
+                    <option value="studio">Studio</option>
+                    <option value="soft">Soft</option>
+                    <option value="harsh">Harsh</option>
+                    <option value="backlit">Backlit</option>
+                    <option value="neon">Neon</option>
+                    <option value="golden-hour">Golden Hour</option>
+                    <option value="blue-hour">Blue Hour</option>
+                    <option value="low-key">Low Key</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="mood">Mood</label>
+                  <select id="mood">
+                    <option value="">Select Mood</option>
+                    <option value="happy">Happy</option>
+                    <option value="sad">Sad</option>
+                    <option value="tense">Tense</option>
+                    <option value="mysterious">Mysterious</option>
+                    <option value="romantic">Romantic</option>
+                    <option value="adventurous">Adventurous</option>
+                    <option value="scary">Scary</option>
+                    <option value="peaceful">Peaceful</option>
+                    <option value="energetic">Energetic</option>
+                    <option value="nostalgic">Nostalgic</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Technical Options -->
+            <div class="form-section">
+              <h3>Technical Options</h3>
+              
+              <div class="form-row two-columns">
+                <div class="input-group">
+                  <label for="aspect">Aspect Ratio</label>
+                  <select id="aspect">
+                    <option value="">Select Aspect Ratio</option>
+                    <option value="16:9">16:9 (Landscape)</option>
+                    <option value="4:3">4:3 (Standard)</option>
+                    <option value="1:1">1:1 (Square)</option>
+                    <option value="9:16">9:16 (Portrait)</option>
+                    <option value="21:9">21:9 (Ultrawide)</option>
+                  </select>
+                </div>
+                
+                <div class="input-group">
+                  <label for="resolution">Resolution</label>
+                  <select id="resolution">
+                    <option value="">Select Resolution</option>
+                    <option value="8k">8K</option>
+                    <option value="4k">4K</option>
+                    <option value="1080p">1080p</option>
+                    <option value="720p">720p</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional Details -->
+            <div class="form-section">
+              <h3>Additional Details</h3>
+              
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="additionalDetails">Extra Details</label>
+                  <textarea id="additionalDetails" placeholder="Add more specific details here..."></textarea>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="referenceImage">Reference Image URL (optional)</label>
+                  <input type="text" id="referenceImage" placeholder="Enter image URL">
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div id="imagePreview" class="image-preview">Image preview will appear here</div>
+              </div>
+            </div>
+            
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <button type="button" id="generateBtn" class="primary-button">Generate Prompt</button>
+              <button type="button" id="getLuckyBtn" class="secondary-button">I'm Feeling Lucky</button>
+              <button type="button" id="resetBtn" class="tertiary-button">Reset</button>
+            </div>
+          </form>
+        </section>
+        
+        <!-- Results Section -->
+        <section class="prompt-results-section">
+          <h2>Generated Prompt</h2>
+          
+          <div class="generated-prompt-container">
+            <div id="generatedPrompt" class="generated-prompt">Your generated prompt will appear here.</div>
+            <button id="copyPromptBtn" class="icon-button" style="display: none;"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          
+          <!-- Export Options -->
+          <div class="export-options">
+            <h3>Export Options</h3>
+            
+            <div class="button-group">
+              <button id="exportTextBtn" class="export-button"><i class="fas fa-file-alt"></i> Text</button>
+              <button id="exportJsonBtn" class="export-button"><i class="fas fa-file-code"></i> JSON</button>
+              <button id="exportPdfBtn" class="export-button"><i class="fas fa-file-pdf"></i> PDF</button>
+              <button id="exportEmailBtn" class="export-button"><i class="fas fa-envelope"></i> Email</button>
+            </div>
+          </div>
+          
+          <!-- Recent History -->
+          <div class="recent-history">
+            <h3>Recent History</h3>
+            <div id="historyItems" class="history-items"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <!-- History Tab -->
+    <div id="historyTab" class="tab-content">
+      <div class="tab-header">
+        <h2>Prompt History</h2>
+        <button id="clearHistoryBtn" class="danger-button"><i class="fas fa-trash"></i> Clear History</button>
+      </div>
+      
+      <div id="promptHistory" class="full-history-container">
+        <p>No history items yet.</p>
+      </div>
+    </div>
+    
+    <!-- Workspace Tab -->
+    <div id="workspaceTab" class="tab-content">
+      <!-- Workspace Selection -->
+      <div id="workspaceContent">
+        <div class="tab-header">
+          <h2>Workspace</h2>
+          <p>Collaborate with others by creating or joining a workspace.</p>
+        </div>
+        
+        <div class="workspace-buttons">
+          <button id="createWorkspaceBtn" class="primary-button"><i class="fas fa-plus"></i> Create Workspace</button>
+          <button id="joinWorkspaceBtn" class="secondary-button"><i class="fas fa-sign-in-alt"></i> Join Workspace</button>
+        </div>
+      </div>
+      
+      <!-- Workspace Details (hidden until in a workspace) -->
+      <div id="workspaceDetails" style="display: none;">
+        <div class="tab-header">
+          <h2>Workspace: <span id="workspaceName"></span></h2>
+          <div class="workspace-controls">
+            <button id="sharePresetBtn" class="primary-button"><i class="fas fa-share-alt"></i> Share Current Preset</button>
+            <button id="leaveWorkspaceBtn" class="danger-button"><i class="fas fa-sign-out-alt"></i> Leave Workspace</button>
+          </div>
+        </div>
+        
+        <h3>Shared Presets</h3>
+        <div id="workspacePresets" class="workspace-presets-container">
+          <p>No shared presets yet.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Help Tab -->
+    <div id="helpTab" class="tab-content">
+      <h2>Help & Documentation</h2>
+      
+      <div class="help-section">
+        <h3>Getting Started</h3>
+        <p>CinePrompt AI helps you generate high-quality prompts for AI image generators with a cinematic focus. Follow these steps to create your perfect prompt:</p>
+        
+        <ol>
+          <li>Fill in the <strong>Subject</strong> field with your main subject</li>
+          <li>Select a <strong>Genre</strong> and <strong>Setting</strong> that matches your vision</li>
+          <li>Choose <strong>Style</strong>, <strong>Lighting</strong>, and <strong>Mood</strong> options</li>
+          <li>Set <strong>Technical Options</strong> like aspect ratio and resolution</li>
+          <li>Add any <strong>Additional Details</strong> to refine your prompt</li>
+          <li>Click <strong>Generate Prompt</strong> to create your prompt</li>
+        </ol>
+        
+        <p>You can also click <strong>I'm Feeling Lucky</strong> to generate a random prompt.</p>
+      </div>
+      
+      <div class="help-section">
+        <h3>Tips for Better Prompts</h3>
+        <ul>
+          <li>Be specific with your subject description</li>
+          <li>Choose complementary style and lighting options</li>
+          <li>Use the additional details field to add specific elements</li>
+          <li>Include a reference image URL for better results</li>
+          <li>Save your favorite prompts to reuse later</li>
+        </ul>
+      </div>
+      
+      <div class="help-section">
+        <h3>About CinePrompt AI</h3>
+        <p>CinePrompt AI was created to help artists, filmmakers, and enthusiasts create better prompts for AI image generators. Our tool focuses on creating prompts with a cinematic quality that produce stunning, film-like images.</p>
+        <p>Version 1.0 - © 2023 CinePrompt</p>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Toast Container for Notifications -->
+  <div id="toastContainer"></div>
+  
+  <!-- Main script -->
+  <script src="app.js"></script>
+</body>
+</html>
